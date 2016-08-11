@@ -1,0 +1,16 @@
+# intellij idea project files
+*.iml
+.idea
+
+# go:generate files
+bindata.go
+
+# binary builds
+policecz
+
+# code coverage data
+coverage.txt
+
+# dependencies
+.glide
+vendor

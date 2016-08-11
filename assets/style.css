@@ -1,0 +1,19 @@
+body {
+max-width: 1080px;
+margin: 0 auto !important;
+float: none !important;
+}
+
+blockquote {
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+}
+
+
+footer {
+  text-align:right;
+  font-size: 90%;
+  margin-top:10px;
+}

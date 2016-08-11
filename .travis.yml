@@ -1,0 +1,12 @@
+language: go
+sudo: false
+go:
+  - tip
+before_install:
+  - make setup
+
+script:
+  - make travis-ci
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)

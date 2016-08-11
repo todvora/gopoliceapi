@@ -5,6 +5,9 @@ go:
 before_install:
   - make setup
 
+install
+  - make install
+
 script:
   - make travis-ci
 

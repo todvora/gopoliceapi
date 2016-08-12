@@ -19,14 +19,14 @@ install:
 update:
 	@glide update
 
-test:
+test: build
 	@go test -v $(glide novendor)
 
-cover:
+cover: build
 	@go test -coverprofile=coverage.txt $(glide novendor)
 	@go tool cover -html=coverage.txt
 
-travis-ci:
+travis-ci: build
 	go test -v -coverprofile=coverage.txt -covermode=atomic $(glide novendor)
 
 clean:

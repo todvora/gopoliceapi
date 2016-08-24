@@ -6,7 +6,7 @@
 bindata.go
 
 # binary builds
-policecz
+gopoliceapi
 
 # code coverage data
 coverage.txt

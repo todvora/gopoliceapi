@@ -13,3 +13,12 @@ script:
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
+
+deploy:
+  provider: releases
+  api_key:
+    secure: "zQmF53L9rMbhOe6E4aOpu15duU5UrUC981hYaaykSyp9mrH7vmHYYoXe7wa1L34lYSc+XnNdVq+sfqRVBPkXylFulgx6U2539NcGTPiZ/jPVbE+M7atS4jvVb+3NivTiKvHt3Oq8LrSF7iFZ5qpZD/XIYmvGQMyn19sPBeZdNkJ9VnMRcQZD/RwXWIrilRwdaX6/mDFm+0GJD2OIAUpuLeKkSm8XI1HqDsXOGUyjL009CP+LkY61fxU+XQegy0krKyCLlIJcHKxsR/1901wz3hH1osk+Te8pjouGnshWyiPcxaFEBACELXuZ+4H6MbnkOB8lklBqbMbNZFCM4K0N+LyhgSiOzJSn+pW9AVT5KYNgzfxssfNizq4Kt0qpOiKE5QgKcoXRH6fXIAIyKB5Xden3o3/3rpA+DPCSWYO0czZoTkB9lfyA4m92mo1cn7HUmtX2EiXloapaaZuO31o5kTLCzLcp5IV8MhKiacjuhkk68DOqvE+Nc3s61Z0IbOxYYAmIw830oWmXA3eyacsVa1vXLgHRJMLTUV2Xi/cx4UCT49Sxqafz4cIdDPvqv4gDoyFAqhatQslirecXtI5WZgjNzV0S+A7T5hTRYVXpC2I0ZobHygjZSP5cju1g9xYYBK9SE74rDKiCHKRbB5N4N1htJV206bxa57XeJwZq/ns="
+  file: gopoliceapi
+  skip_cleanup: true
+  on:
+    tags: true

@@ -7,7 +7,7 @@ all: install fmt test build
 
 build:
 	@go generate
-	@go build $(GOFLAGS) -o policecz
+	@go build $(GOFLAGS) -o gopoliceapi
 
 setup:
 	go get github.com/Masterminds/glide
@@ -36,6 +36,6 @@ fmt:
 	gofmt -w .
 
 run: build
-	@./policecz
+	@./gopoliceapi
 
 ## EOF

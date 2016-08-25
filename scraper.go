@@ -12,7 +12,7 @@ const APP_BASE_URL = "http://aplikace.policie.cz/patrani-vozidla/"
 const REQUEST_TIMEOUT = 1 * time.Second
 
 type Client struct {
-	timeout time.Duration
+	timeout   time.Duration
 	httplient *http.Client
 }
 

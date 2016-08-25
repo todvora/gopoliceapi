@@ -5,8 +5,9 @@
 # go:generate files
 bindata.go
 
-# binary builds
+# binary builds, releases
 gopoliceapi
+release
 
 # code coverage data
 coverage.txt

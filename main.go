@@ -27,7 +27,7 @@ func toSearchQuery(url url.Values) (vin string, regno string) {
 }
 
 func searchHandler(searchCallback func(vin string, regno string) Results) http.Handler {
-	return http.HandlerFunc(func (w http.ResponseWriter, r *http.Request) {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		results := searchCallback(toSearchQuery(r.URL.Query()))
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		json.NewEncoder(w).Encode(results)
@@ -36,8 +36,8 @@ func searchHandler(searchCallback func(vin string, regno string) Results) http.H
 
 func getContentType(url string) string {
 	extension := path.Ext(url)
-	mime := mime.TypeByExtension(extension)
-	return mime
+	mimeType := mime.TypeByExtension(extension)
+	return mimeType
 }
 
 // openshift health monitoring
@@ -47,20 +47,19 @@ func healthHandler(w http.ResponseWriter, _ *http.Request) {
 
 //go:generate go-bindata -prefix "assets/" assets/...
 func staticHandler(w http.ResponseWriter, req *http.Request) {
-	var path string = req.URL.Path[1:]
-	if path == "" {
-		path = "index.html"
+	var urlPath string = req.URL.Path[1:]
+	if urlPath == "" {
+		urlPath = "index.html"
 	}
 
-	if bs, err := Asset(path); err != nil {
-		http.Error(w, "Page "+path+" not found!", http.StatusNotFound)
+	if bs, err := Asset(urlPath); err != nil {
+		http.Error(w, "Page "+ urlPath +" not found!", http.StatusNotFound)
 	} else {
-		w.Header().Set("Content-Type", getContentType(path))
+		w.Header().Set("Content-Type", getContentType(urlPath))
 		var reader = bytes.NewBuffer(bs)
 		io.Copy(w, reader)
 	}
 }
-
 
 func main() {
 	client := defaultClient()

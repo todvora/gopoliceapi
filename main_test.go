@@ -1,38 +1,38 @@
 package main
 
 import (
-	"net/http"
-	"net/http/httptest"
-	"strings"
-	"testing"
-	"net/url"
-	"github.com/stretchr/testify/assert"
 	"encoding/json"
 	"errors"
+	"github.com/stretchr/testify/assert"
+	"net/http"
+	"net/http/httptest"
+	"net/url"
+	"strings"
+	"testing"
 )
 
 func TestToSearchQueryOnlyQ(t *testing.T) {
 	values := make(url.Values)
-	values["q"] =  []string{"FOOBAR"}
+	values["q"] = []string{"FOOBAR"}
 	vin, regno := toSearchQuery(values)
-	assert.Equal(t, "FOOBAR", vin);
-	assert.Equal(t, "FOOBAR", regno);
+	assert.Equal(t, "FOOBAR", vin)
+	assert.Equal(t, "FOOBAR", regno)
 }
 
 func TestToSearchQueryOnlyVin(t *testing.T) {
 	values := make(url.Values)
-	values["vin"] =  []string{"FOOBAR"}
+	values["vin"] = []string{"FOOBAR"}
 	vin, regno := toSearchQuery(values)
-	assert.Equal(t, "FOOBAR", vin);
-	assert.Equal(t, "", regno);
+	assert.Equal(t, "FOOBAR", vin)
+	assert.Equal(t, "", regno)
 }
 
 func TestToSearchQueryOnlyRegno(t *testing.T) {
 	values := make(url.Values)
-	values["regno"] =  []string{"FOOBAR"}
+	values["regno"] = []string{"FOOBAR"}
 	vin, regno := toSearchQuery(values)
-	assert.Equal(t, "", vin);
-	assert.Equal(t, "FOOBAR", regno);
+	assert.Equal(t, "", vin)
+	assert.Equal(t, "FOOBAR", regno)
 }
 
 func TestHealthHandler(t *testing.T) {
@@ -111,7 +111,6 @@ func TestStaticHandlerNonexistent(t *testing.T) {
 
 	assert.Equal(t, http.StatusNotFound, rr.Code, "handler returned wrong status code")
 }
-
 
 func TestSearchHandler(t *testing.T) {
 	req, err := http.NewRequest("GET", "/search?q=ABCD", nil)

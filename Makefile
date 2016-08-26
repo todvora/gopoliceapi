@@ -56,7 +56,7 @@ define increment_version
 	# increment the version, using provided component type (major|minor|patch)
 	$(eval NEW_VERSION = $(shell go run scripts/semver.go $(1) $(CURRENT_VERSION)))
 	@echo Incrementing to $(NEW_VERSION)
-	@echo tag -a v$(NEW_VERSION) -m \'Release $(NEW_VERSION)\'
+	git tag -a v$(NEW_VERSION) -m \'Release $(NEW_VERSION)\'
 	##git push --tags
 endef
 

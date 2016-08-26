@@ -49,15 +49,15 @@ release:
 
 define increment_version
 	# read the current version from the latest git tag
-	$(eval CURRENT_VERSION = $(shell git describe --tags | cut -c 2-))
+	$(eval CURRENT_VERSION = $(shell git describe --abbrev=0 | cut -c 2-))
 
 	@echo Incrementing $(1) of $(CURRENT_VERSION)
 
 	# increment the version, using provided component type (major|minor|patch)
 	$(eval NEW_VERSION = $(shell go run scripts/semver.go $(1) $(CURRENT_VERSION)))
 	@echo Incrementing to $(NEW_VERSION)
-	git tag -a v$(NEW_VERSION) -m \'Release $(NEW_VERSION)\'
-	##git push --tags
+	git tag -a v$(NEW_VERSION) -m 'Release $(NEW_VERSION)'
+	git push --tags
 endef
 
 version.patch:

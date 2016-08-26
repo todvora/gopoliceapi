@@ -26,8 +26,8 @@ deploy:
     - release/gopoliceapi-linux-386
     - release/gopoliceapi-linux-amd64
     - release/gopoliceapi-linux-arm
-    - release/gopoliceapi-windows-386
-    - release/gopoliceapi-windows-amd64
+    - release/gopoliceapi-windows-386.exe
+    - release/gopoliceapi-windows-amd64.exe
   skip_cleanup: true
   on:
     tags: true
